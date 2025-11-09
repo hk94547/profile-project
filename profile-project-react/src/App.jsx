@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import profilePic from './assets/profile-project.jpg' 
 
 function App() {
   const [resume, setResume] = useState(null)
@@ -27,6 +28,8 @@ function App() {
     <>
       <div className='app-container'>
         <h1>Welcome to Hemanth's Profile</h1>
+        
+        <img src={profilePic} alt="Hemanth" className="profile-picture" />
 
         {resume && (
         <div className="section">
