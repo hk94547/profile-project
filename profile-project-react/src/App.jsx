@@ -1,29 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [resume, setResume] = useState(null)
+
+  useEffect(() => {
+    // Fetch resume data or set it to a default value
+    setResume({
+      name: "Hemanth",
+      title: "Devops Engineer",
+      experience: "8 years",
+      skills: ["Golang", "Docker", "Kubernetes", "Kafka"]
+    });
+  }, []);
+
+  const downloadResume = () => {
+    const link = document.createElement('a')
+    link.href = '/resume.pdf' // Ensure this path is correct
+    link.download = 'resume.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
 
   return (
     <>
-      <div>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className='app-container'>
+        <h1>Welcome to Hemanth's Profile</h1>
+
+        {resume && (
+        <div className="section">
+          <h2>📄 Resume</h2>
+          <p>Name: {resume.name}</p>
+          <p>Title: {resume.title}</p>
+          <p>Experience: {resume.experience}</p>
+          <p>Skills: {resume.skills.join(', ')}</p>
+          <button onClick={downloadResume}>Download Resume</button>
+        </div>
+      )}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
     </>
   )
 }
