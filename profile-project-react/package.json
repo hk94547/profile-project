@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://hk94547.github.io/profile-project",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
