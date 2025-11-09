@@ -52,6 +52,19 @@ function App() {
             <p>When I'm not containerizing applications or managing Kubernetes clusters,
                you'll find me coding in Go or Python or Javascript.</p>
             <p>I believe in infrastructure as code and chai/candies as fuel! ☕</p>
+
+            <div className="contact-links">
+        <p>
+          <span className="icon">📧GMAIL: </span>
+          <a href="mailto:hk94547@gmail.com">hk94547@gmail.com</a>
+        </p>
+        <p>
+          <span className="icon">💼Linkedin: </span>
+          <a href="https://www.linkedin.com/in/hemanth-kumar-kondeti/" target="_blank" rel="noopener noreferrer">
+            Hemanth Kumar
+          </a>
+        </p>
+      </div>
           </div>
           </div>
         )}
