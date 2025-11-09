@@ -13,10 +13,10 @@ function App() {
       skills: ["Golang", "Docker", "Kubernetes", "Kafka"]
     });
   }, []);
-
+  console.log('Public URL:', import.meta.env.BASE_URL);
   const downloadResume = () => {
     const link = document.createElement('a')
-    link.href = '/resume.pdf' // Ensure this path is correct
+    link.href = `${import.meta.env.BASE_URL}resume.pdf` // base url of react built app
     link.download = 'resume.pdf'
     document.body.appendChild(link)
     link.click()
