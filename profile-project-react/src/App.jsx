@@ -4,6 +4,11 @@ import profilePic from './assets/profile-project.jpg'
 
 function App() {
   const [resume, setResume] = useState(null)
+  const [showAbout, setShowAbout] = useState(false)
+
+  const toggleAbout = () => {
+    setShowAbout(!showAbout)
+  }
 
   useEffect(() => {
     // Fetch resume data or set it to a default value
@@ -14,7 +19,9 @@ function App() {
       skills: ["Golang", "Docker", "Kubernetes", "Kafka"]
     });
   }, []);
+
   console.log('Public URL:', import.meta.env.BASE_URL);
+  
   const downloadResume = () => {
     const link = document.createElement('a')
     link.href = `${import.meta.env.BASE_URL}resume.pdf` // base url of react built app
@@ -29,7 +36,25 @@ function App() {
       <div className='app-container'>
         <h1>Welcome to Hemanth's Profile</h1>
         
-        <img src={profilePic} alt="Hemanth" className="profile-picture" />
+        <img 
+          src={profilePic} 
+          alt="Hemanth" 
+          className="profile-picture" 
+          onClick={toggleAbout}
+          style={{cursor: 'pointer'}}
+          />
+        {showAbout && (
+          <div className="about-overlay" onClick={() => setShowAbout(false)}>
+          <div className="about-content" onClick={e => e.stopPropagation()}>
+            <button className="close-button" onClick={() => setShowAbout(false)}>×</button>
+            <h1>👨‍💻 About Me</h1>
+            <p>Hey there! I'm a DevOps enthusiast who loves automating everything.</p>
+            <p>When I'm not containerizing applications or managing Kubernetes clusters,
+               you'll find me coding in Go or Python or Javascript.</p>
+            <p>I believe in infrastructure as code and chai/candies as fuel! ☕</p>
+          </div>
+          </div>
+        )}
 
         {resume && (
         <div className="section">
